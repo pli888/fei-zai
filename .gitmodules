@@ -1,0 +1,3 @@
+[submodule "yii2-laradock"]
+	path = yii2-laradock
+	url = https://github.com/ydatech/yii2-laradock.git
