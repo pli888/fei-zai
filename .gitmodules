@@ -1,0 +1,3 @@
+[submodule "yii2-docker"]
+	path = yii2-docker
+	url = https://github.com/yiisoft/yii2-docker.git
