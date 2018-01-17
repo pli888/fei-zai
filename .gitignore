@@ -13,3 +13,7 @@ themes/classic/views/
 
 # yii2-laradock testing
 basic
+
+# gigadb-website testing
+gigadb-website
+yii-1.1.16
