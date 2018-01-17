@@ -1,3 +1,6 @@
 [submodule "yii2-laradock"]
 	path = yii2-laradock
 	url = https://github.com/ydatech/yii2-laradock.git
+[submodule "gigadb-website"]
+	path = gigadb-website
+	url = https://github.com/gigascience/gigadb-website.git
