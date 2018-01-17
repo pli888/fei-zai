@@ -10,3 +10,6 @@ themes/classic/views/
 
 # Vagrant
 .vagrant
+
+# yii2-laradock testing
+basic
