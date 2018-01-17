@@ -8,22 +8,22 @@ in [yii2-laradock](https://github.com/ydatech/yii2-laradock).
 
 ```bash
 # Start Docker Ubuntu VM
-vagrant up
+$ vagrant up
 # Change branch
 git checkout yii2-laradock
 # Clone submodule
-git submodule init
-git submodule update
+$ git submodule init
+$ git submodule update
 # Create .env file
-cd yii2-laradock
-cp env-example .env
+$ cd yii2-laradock
+$ cp env-example .env
 # Make changes to .env if required
 # Spin up and log into VM
-vagrant up
-vagrant ssh
+$ vagrant up
+$ vagrant ssh
 # Build and start containers
-cd /vagrant/yii2-laradock
-docker-compose up -d nginx mysql
+$ cd /vagrant/yii2-laradock
+$ docker-compose up -d nginx mysql
 # Check containers are running
 $ docker-compose ps
            Name                          Command              State                     Ports                  
@@ -48,11 +48,12 @@ docker exec -it yii2laradock_nginx_1 bash
 # Create nginx conf file
 cd /etc/nginx/sites-available
 cp app.conf.example basic.conf
+# Make changes to basic.conf
 $ vi basic.conf
-# server_name 192.168.42.10;
-# root /var/www/basic/web;
+server_name 192.168.42.10;
+root /var/www/basic/web;
 # Reload nginx config
-nginx -s reload
+$ nginx -s reload
 ```
 
-Check out [http://192.168.42.10](http://192.168.42.10) to see web page
+Check out [http://192.168.42.10](http://192.168.42.10) to see web page.
