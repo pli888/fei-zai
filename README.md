@@ -1,7 +1,61 @@
 # fei-zai
 Testing Yii with LaraDock
 
-## How to use
+## Test gigadb-website with yii2-laradock
+
+```bash
+# Stop all containers started by docker-compose
+$ docker stop $(docker ps -a -q)
+# Remove all containers
+$ docker rm $(docker ps -a -q)
+# Check
+$ docker-compose ps
+# Add gigadb-website repo
+$ git submodule add https://github.com/gigascience/gigadb-website.git
+cd gigadb-website
+git checkout develop
+# Add gigadb-website path into APPLICATION varaible in .env file
+$ cd ../yii2-laradock
+$ vi .env
+# APPLICATION=../gigadb-website/
+# Spin up and log into VM
+$ vagrant up
+$ vagrant ssh
+# Build and start containers
+$ cd /vagrant/yii2-laradock
+$ docker-compose up -d nginx postgres pgadmin
+# Check containers are running
+$ docker-compose ps
+# Log into workspace container
+$ docker-compose exec --u=laradock workspace bash
+# Use composer to download Yii version 1 from github
+$ composer create-project --prefer-dist --stability=dev yiisoft/yii yii-1.1.16
+# Test yii console command by creating a skeleton Yii application
+$ cd yii-1.1.16/framework
+$ chmod a+x yiic
+$ ./yiic webapp ../testdrive
+# Logout of workspace container
+$ exit
+# Log into nginx container
+# docker-compose exec --u=laradock nginx bash
+docker exec -it yii2laradock_nginx_1 bash
+# Create nginx conf file
+cd /etc/nginx/sites-available
+cp app.conf.example yii_requirements.conf
+# Make changes to yii_requirements.conf
+$ vi yii_requirements.conf
+server_name 192.168.42.10;
+root /var/www/yii-1.1.16/;
+# Reload nginx config
+$ nginx -s reload
+```
+
+Check out [http://192.168.42.10/requirements](http://192.168.42.10/requirements) to see web page.
+
+
+```
+
+## Test yii2-laradock
 
 Check out [documentation](https://github.com/ydatech/yii2-laradock/wiki/How-To-Install-Yii2-Framework-Basic-Template-on-Laradock)
 in [yii2-laradock](https://github.com/ydatech/yii2-laradock).
