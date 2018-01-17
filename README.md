@@ -1,7 +1,7 @@
 # fei-zai
 Testing Yii with LaraDock
 
-## Test gigadb-website with yii2-laradock
+## Test Yii version 1 with yii2-laradock
 
 ```bash
 # Stop all containers started by docker-compose
@@ -10,14 +10,6 @@ $ docker stop $(docker ps -a -q)
 $ docker rm $(docker ps -a -q)
 # Check
 $ docker-compose ps
-# Add gigadb-website repo
-$ git submodule add https://github.com/gigascience/gigadb-website.git
-cd gigadb-website
-git checkout develop
-# Add gigadb-website path into APPLICATION varaible in .env file
-$ cd ../yii2-laradock
-$ vi .env
-# APPLICATION=../gigadb-website/
 # Spin up and log into VM
 $ vagrant up
 $ vagrant ssh
@@ -37,7 +29,6 @@ $ ./yiic webapp ../testdrive
 # Logout of workspace container
 $ exit
 # Log into nginx container
-# docker-compose exec --u=laradock nginx bash
 docker exec -it yii2laradock_nginx_1 bash
 # Create nginx conf file
 cd /etc/nginx/sites-available
@@ -50,10 +41,13 @@ root /var/www/yii-1.1.16/;
 $ nginx -s reload
 ```
 
-Check out [http://192.168.42.10/requirements](http://192.168.42.10/requirements) to see web page.
+Check out:
+* [http://192.168.42.10/requirements](http://192.168.42.10/requirements)
+* [http://192.168.42.10/demos/blog/](http://192.168.42.10/demos/blog/)
+* [http://192.168.42.10/demos/hangman/](http://192.168.42.10/demos/hangman/)
+* [http://192.168.42.10/demos/helloworld/](http://192.168.42.10/demos/helloworld/)
+* [http://192.168.42.10/demos/phonebook/](http://192.168.42.10/demos/phonebook/)
 
-
-```
 
 ## Test yii2-laradock
 
